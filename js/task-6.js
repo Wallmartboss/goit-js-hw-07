@@ -22,6 +22,8 @@ create.addEventListener("click", () => {
 		input.value = "";
 	}
 });
+
+const fragment = document.createDocumentFragment();
 function createBoxes(amount) {
 	// визначаємо розміри боксів відповідно до кількості
 	for (let i = 0; i < amount; i++) {
@@ -31,8 +33,9 @@ function createBoxes(amount) {
 		newBox.style.width = `${size}px`;
 		newBox.style.height = `${size}px`;
 		newBox.style.backgroundColor = getRandomHexColor();
-		boxes.appendChild(newBox); // добавляємо div всередину #boxes
+		fragment.appendChild(newBox);
 	}
+	boxes.appendChild(fragment); // добавляємо фрагмент з div всередину #boxes за одну операцію
 }
 function destroyBoxes() {
 	boxes.innerHTML = ""; // видаляємо всі добавлені div
